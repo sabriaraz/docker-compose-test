@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+    hello_docker:
+        build:
+            context: ./
+            dockerfile: /home/sabri/PycharmProjects/test_docker/dockerize_worker/test_docker.docker
+        tty: true
+        restart: always
+
+        volumes:
+            - /home:/home
+        command: ["bash","/home/sabri/PycharmProjects/test_docker/test.sh","test_docker"]
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "200k"
+                max-file: "10"
